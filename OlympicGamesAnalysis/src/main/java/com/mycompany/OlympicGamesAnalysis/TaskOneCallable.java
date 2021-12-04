@@ -42,7 +42,7 @@ public class TaskOneCallable implements Callable<String> {
 
 	public TaskOneCallable1(List<TeamResult> teamResults, int decimalPlacePrecision) {
 		this.teamResults = teamResults;
-		this.decimalPlacePrecision = decimalPlacePrecision;
+		this.decimalPlacePrecision = decimalPlacePrecision;  //accepting the two arguements
 	}
 
 	@Override

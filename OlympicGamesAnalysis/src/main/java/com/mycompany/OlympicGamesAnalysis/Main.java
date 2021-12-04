@@ -4,11 +4,13 @@
 package com.mycompany.OlympicGamesAnalysis;
 
 import java.io.IOException;
+import static java.util.Collections.list;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Main
 {
@@ -17,7 +19,7 @@ public class Main
 		String filePath = args.length == 0 ? "./assets/medals.txt" : args[0];
 		List<TeamResult> teamResults = FileParser.parseTeamResults(filePath);
 		//System.out.println(teamResults);
-		int precision = 2;
+		int precision = 2;	
 		
 		final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(7);
 
@@ -28,6 +30,15 @@ public class Main
 		System.out.println("Task 1: The percentage of countries whose rank is greater than their Total Medal Rank");
 		System.out.println(greaterGoldRankFuture1.get());
 		System.out.println(greaterGoldRankFuture2.get());
+		
+		/* Task 2*/
+		
+		int initialDelay = 3;
+		int delay = 5;
+		
+		executorService.scheduleWithFixedDelay(new SchedualRunnable(teamResults), initialDelay, delay, TimeUnit.SECONDS);
+		
+		
 				
 	}
 }
